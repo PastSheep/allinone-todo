@@ -1,0 +1,99 @@
+{
+  "id": "com.pastsheep.todo",
+  "name": "待办",
+  "version": "0.1.0",
+  "description": "示例插件：记录待办、完成/删除、按状态筛选，并把数据持久化到插件命名空间。作为独立仓库插件的安装链路示例。",
+  "author": {
+    "name": "PastSheep",
+    "url": "https://github.com/PastSheep"
+  },
+  "license": "MIT",
+  "icon": "assets/icon.svg",
+  "main": "dist/main.js",
+  "ui": "dist/ui.js",
+  "engines": {
+    "allinone": ">=0.1.0 <1.0.0"
+  },
+  "dependencies": {
+    "allinone.storage": "^0.1.0"
+  },
+  "apiVersion": "1",
+  "contributes": {
+    "permissions": [
+      "notifications"
+    ],
+    "commands": [
+      {
+        "id": "com.pastsheep.todo.add",
+        "title": "新建待办",
+        "description": "创建一个待办条目；命令面板触发时使用默认标题。",
+        "category": "待办",
+        "keywords": [
+          "todo",
+          "task",
+          "new"
+        ]
+      },
+      {
+        "id": "com.pastsheep.todo.clear-completed",
+        "title": "清除已完成待办",
+        "description": "删除全部已完成的待办条目。",
+        "category": "待办",
+        "keywords": [
+          "todo",
+          "clean",
+          "completed"
+        ]
+      }
+    ],
+    "slots": [
+      {
+        "id": "com.pastsheep.todo.sidebar",
+        "slot": "sidebar",
+        "title": "待办快捷入口",
+        "description": "显示未完成数量并支持快速添加。",
+        "icon": "assets/icon.svg",
+        "order": 20
+      },
+      {
+        "id": "com.pastsheep.todo.statusbar",
+        "slot": "statusbar",
+        "title": "待办计数",
+        "description": "在状态栏显示未完成待办数量。",
+        "order": 100
+      }
+    ],
+    "pages": [
+      {
+        "id": "com.pastsheep.todo.page",
+        "title": "待办",
+        "description": "待办列表、筛选与新增。",
+        "icon": "assets/icon.svg",
+        "order": 20
+      }
+    ],
+    "settings": [
+      {
+        "key": "defaultPriority",
+        "title": "默认优先级",
+        "description": "新增待办时默认使用的优先级。",
+        "type": "enum",
+        "default": "normal",
+        "options": [
+          {
+            "value": "low",
+            "label": "低"
+          },
+          {
+            "value": "normal",
+            "label": "普通"
+          },
+          {
+            "value": "high",
+            "label": "高"
+          }
+        ]
+      }
+    ]
+  }
+}
